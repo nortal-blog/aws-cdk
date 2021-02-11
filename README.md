@@ -1,14 +1,31 @@
-# Welcome to your CDK C# project!
+# IaC tooling
 
-This is a blank project for C# development with CDK.
+This document explores different IaC tools and their characteristics on general level and then takes a small dive on the AWS Cloud Development Kit (CDK) functionality.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+## Types of IaC tools
 
-It uses the [.NET Core CLI](https://docs.microsoft.com/dotnet/articles/core/) to compile and execute your project.
+I would split the IaC tools into couple of very rough categories.
 
-## Useful commands
+First split is done according to their target groups
 
-* `dotnet build src` compile this app
-* `cdk deploy`       deploy this stack to your default AWS account/region
-* `cdk diff`         compare deployed stack with current state
-* `cdk synth`        emits the synthesized CloudFormation template
+* Cloud-specific tools
+  * AWS CloudFormation
+  * AWS Cloud Development Kit (CDK)
+  * Azure Resource Manager
+  * Google Cloud Deployment Manager
+* Cloud-agnostic tools
+  * Terraform
+  * Pulumi
+  * and many many more
+
+Next division is by the type of language used by the tool,
+
+* Real programming language
+  * AWS Cloud Development Kit (CDK )
+  * Pulumi
+* Domain specific language
+  * AWS CloudFormation (yaml/json)
+  * Azure Resource Manager (json)
+  * Google Cloud Deployment Manager (yaml)
+  * Terraform (hcl)
+

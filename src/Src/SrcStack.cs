@@ -1,4 +1,7 @@
+using System.Collections.Generic;
 using Amazon.CDK;
+using Src.Configs;
+using Src.Modules;
 
 namespace Src
 {
@@ -6,7 +9,20 @@ namespace Src
     {
         internal SrcStack(Construct scope, string id, IStackProps props = null) : base(scope, id, props)
         {
-            // The code that defines your stack goes here
+            var appConfig = new AppConfiguration
+            {
+                AppId = "hello",
+                AppName = "Hello",
+                Lambdas = new List<LambdaConfiguration> {
+                    new LambdaConfiguration {
+                        ApiPath = "/api/{proxy+}",
+                        FunctionName = "helloNode"
+                    }
+                }
+            };
+
+            var apiGatewayProxy = new HttpApiProxy(this);
+            apiGatewayProxy.ConstructServerlessApp(appConfig);
         }
     }
 }
