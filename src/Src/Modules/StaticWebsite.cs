@@ -11,9 +11,9 @@ namespace Src.Modules {
             this.stack = stack;
         }
 
-        public void Construct(AppConfiguration app) {
+        public void Construct(WebsiteConfiguration app) {
             var bucket = new Bucket(this.stack, "WebsiteBucket", new BucketProps {
-                BucketName = app.ApplicationUrl,
+                BucketName = app.DomainName,
                 PublicReadAccess = true,
                 RemovalPolicy = RemovalPolicy.DESTROY,
                 WebsiteIndexDocument = "index.html"                
@@ -21,10 +21,8 @@ namespace Src.Modules {
 
             var deploy = new BucketDeployment(this.stack, "BucketDeployment", new BucketDeploymentProps{
                 DestinationBucket = bucket,
-                Sources = new [] { Source.Asset("./webpage")
+                Sources = new [] { Source.Asset(app.Resource)
             }});
-
         }
-
-   }
+    }
 }

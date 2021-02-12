@@ -12,13 +12,14 @@ namespace Src.Modules {
             this.stack = stack;
         }
 
-        public void Construct(AppConfiguration app) {
+        public void Construct(LambdaConfiguration app) {
             var bucket = new Bucket(this.stack, "FunctionStore");
 
             var handler = new Function(this.stack, "Function", new FunctionProps {
-                Runtime = Runtime.NODEJS_10_X,
-                Code = Code.FromAsset("function"),
-                Handler = "widgets.main",
+                Runtime = Runtime.NODEJS_12_X,
+                FunctionName = app.FunctionName,
+                Code = Code.FromAsset(app.Resource),
+                Handler = "index.handler",
                 Environment = new Dictionary<string, string>{
                     { "BUCKET", bucket.BucketName }
                 }

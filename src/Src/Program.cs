@@ -20,7 +20,11 @@ namespace Src
                 }
             };
 
-            new SrcStack(app, "HelloApiGateway", stackProps);
+            new LambdaStack(app, "LambdaFunctionOne", stackProps);
+            new LambdaStack(app, "LambdaFunctionTwo", stackProps);
+            new WebsiteStack(app, "WebsiteOne", stackProps);
+
+            new ApiGatewayStack(app, "HelloApiGateway", stackProps);
             app.Synth();
         }
     }

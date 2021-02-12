@@ -16,15 +16,15 @@ namespace Src.Modules {
             this.stack = stack;
         }
 
-        public void ConstructServerlessApp(AppConfiguration app) {
+        public void Construct(AppConfiguration app) {
             var httpApi = AddApiGateway(app.AppId);
             //Custom domain name for the gateway
-            var domainName = AddApiGatewayCustomDomainName(app.GetApplicationUrl(), app.GetCertificateArn());
+            //var domainName = AddApiGatewayCustomDomainName(app.ApplicationUrl, app.CertificateArn);
             //Map the api + domain + stage together
-            var apiMapping = AddApiGatewayMapping(httpApi, domainName);
+            //var apiMapping = AddApiGatewayMapping(httpApi, domainName);
 
             //Add default route to S3 "/*"
-            var defaultRoute = CreateDefaultRouteToS3Bucket(httpApi, app.GetS3BucketUrl());
+            var defaultRoute = CreateDefaultRouteToS3Bucket(httpApi, app.S3BucketUrl);
 
             //Add Lambda integrations
             foreach (var lambda in app.Lambdas) {
@@ -32,7 +32,7 @@ namespace Src.Modules {
             }
 
             //Tie-up everything with the Route53 Alias
-            var route53 = AddRoute53Alias(app.GetHostedZoneUrl(), app.GetApplicationUrl(), domainName);
+            //var route53 = AddRoute53Alias(app.HostedZoneUrl, app.ApplicationUrl, domainName);
         }
 
         private ARecord AddRoute53Alias(string hostedZoneUrl, string applicationUrl, DomainName domainName) {
@@ -88,7 +88,7 @@ namespace Src.Modules {
                 ApiName = $"{appId}-proxy-cdk",
                 CreateDefaultStage = true,
                 Description = $"{appId}-proxy via cdk",
-                DisableExecuteApiEndpoint = true
+                DisableExecuteApiEndpoint = false
             });
         }
     }

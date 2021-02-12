@@ -8,18 +8,12 @@ namespace Src.Configs {
         public string Env { get; set; }
         public List<LambdaConfiguration> Lambdas { get; set; }
 
-        public string GetS3BucketUrl() {
-            return $"http://hello.awsdevfi.nortal.com.s3-website.eu-north-1.amazonaws.com";
-        }
+        public string S3BucketUrl => "http://hello.awsdevfi.nortal.com.s3-website.eu-north-1.amazonaws.com";
 
-        public string GetHostedZoneUrl() {
-            return $"awsdevfi.nortal.com";
-        }
+        public string HostedZoneUrl=> "awsdevfi.nortal.com";
 
         public string ApplicationUrl => $"hello.awsdevfi.nortal.com";
 
-        public string GetCertificateArn() {
-            return "arn:aws:acm:eu-north-1:594357352549:certificate/013468db-b270-427d-86cf-8399a8585c25";
-        }
+        public string CertificateArn => "arn:aws:acm:eu-north-1:594357352549:certificate/013468db-b270-427d-86cf-8399a8585c25";
     }
 }
