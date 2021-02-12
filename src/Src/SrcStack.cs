@@ -17,7 +17,7 @@ namespace Src
                     new LambdaConfiguration {
                         ApiPath = "/api/{proxy+}",
                         FunctionName = "helloNode"
-                    }
+                    },
                 }
             };
 

@@ -16,9 +16,7 @@ namespace Src.Configs {
             return $"awsdevfi.nortal.com";
         }
 
-        public string GetApplicationUrl() {
-            return $"hello.awsdevfi.nortal.com";
-        }
+        public string ApplicationUrl => $"hello.awsdevfi.nortal.com";
 
         public string GetCertificateArn() {
             return "arn:aws:acm:eu-north-1:594357352549:certificate/013468db-b270-427d-86cf-8399a8585c25";

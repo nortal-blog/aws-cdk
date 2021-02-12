@@ -15,8 +15,8 @@ namespace Src
             {
                 Env = new Environment
                 {
-                    Account = "xxxxxxx",
-                    Region = "eu-north-1"
+                    Account = System.Environment.GetEnvironmentVariable("CDK_DEFAULT_ACCOUNT"),
+                    Region = System.Environment.GetEnvironmentVariable("CDK_DEFAULT_REGION")
                 }
             };
 
