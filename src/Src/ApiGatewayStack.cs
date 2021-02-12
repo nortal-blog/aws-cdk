@@ -5,9 +5,9 @@ using Src.Modules;
 
 namespace Src
 {
-    public class SrcStack : Stack
+    public class ApiGatewayStack : Stack
     {
-        internal SrcStack(Construct scope, string id, IStackProps props = null) : base(scope, id, props)
+        internal ApiGatewayStack(Construct scope, string id, IStackProps props = null) : base(scope, id, props)
         {
             var appConfig = new AppConfiguration
             {
@@ -16,13 +16,13 @@ namespace Src
                 Lambdas = new List<LambdaConfiguration> {
                     new LambdaConfiguration {
                         ApiPath = "/api/{proxy+}",
-                        FunctionName = "helloNode"
-                    }
+                        FunctionName = "LambdaFunctionOne"
+                    }                    
                 }
             };
 
             var apiGatewayProxy = new HttpApiProxy(this);
-            apiGatewayProxy.ConstructServerlessApp(appConfig);
+            apiGatewayProxy.Construct(appConfig);
         }
     }
 }

@@ -15,12 +15,16 @@ namespace Src
             {
                 Env = new Environment
                 {
-                    Account = "xxxxxxx",
-                    Region = "eu-north-1"
+                    Account = System.Environment.GetEnvironmentVariable("CDK_DEFAULT_ACCOUNT"),
+                    Region = System.Environment.GetEnvironmentVariable("CDK_DEFAULT_REGION")
                 }
             };
 
-            new SrcStack(app, "HelloApiGateway", stackProps);
+            new LambdaStack(app, "LambdaFunctionOne", stackProps);
+            new LambdaStack(app, "LambdaFunctionTwo", stackProps);
+            new WebsiteStack(app, "WebsiteOne", stackProps);
+
+            new ApiGatewayStack(app, "HelloApiGateway", stackProps);
             app.Synth();
         }
     }

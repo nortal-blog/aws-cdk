@@ -4,9 +4,9 @@ This document explores different IaC tools and their characteristics on general 
 
 ## Types of IaC tools
 
-I would split the IaC tools into couple of very rough categories.
+IaC tools can be split into couple of rough categories.
 
-First split is done according to their target groups
+First split is done according to the cloud vendor.
 
 * Cloud-specific tools
   * AWS CloudFormation
@@ -18,7 +18,7 @@ First split is done according to their target groups
   * Pulumi
   * and many many more
 
-Next division is by the type of language used by the tool,
+Another division is by the type of language used by the tool.
 
 * Real programming language
   * AWS Cloud Development Kit (CDK )
@@ -28,4 +28,3 @@ Next division is by the type of language used by the tool,
   * Azure Resource Manager (json)
   * Google Cloud Deployment Manager (yaml)
   * Terraform (hcl)
-
